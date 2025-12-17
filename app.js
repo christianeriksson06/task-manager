@@ -28,3 +28,28 @@ form.addEventListener("submit", (e) => {
   addTask(title, prioSelect.value);
   titleInput.value = "";
 });
+
+const listEl = document.querySelector("#task-list");
+
+function renderTasks() {
+  listEl.innerHTML = "";
+
+  for (const task of tasks) {
+    const li = document.createElement("li");
+    li.className = "task";
+
+    li.innerHTML = `
+      <span>${task.title}</span>
+      <span class="badge">${task.priority}</span>
+    `;
+
+    listEl.appendChild(li);
+  }
+}
+
+function addTask(title, priority) {
+  const task = createTask(title, priority);
+  tasks.push(task);
+  renderTasks();
+}
+
