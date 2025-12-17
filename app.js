@@ -1,8 +1,12 @@
+
+const STORAGE_KEY = "task_manager_tasks";
+
 const form = document.querySelector("#task-form");
 const titleInput = document.querySelector("#task-title");
 const prioSelect = document.querySelector("#task-priority");
 
-let tasks = [];
+let tasks = loadTasks();
+renderTasks();
 
 function createTask(title, priority) {
   return {
@@ -16,8 +20,10 @@ function createTask(title, priority) {
 function addTask(title, priority) {
   const task = createTask(title, priority);
   tasks.push(task);
-  console.log("Task added:", task);
+  saveTasks();
+  renderTasks();
 }
+
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -61,6 +67,17 @@ li.querySelector("button").addEventListener("click", () => {
 function addTask(title, priority) {
   const task = createTask(title, priority);
   tasks.push(task);
+  saveTasks();
   renderTasks();
+}
+
+
+function saveTasks() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+}
+
+function loadTasks() {
+  const data = localStorage.getItem(STORAGE_KEY);
+  return data ? JSON.parse(data) : [];
 }
 
