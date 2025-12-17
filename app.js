@@ -36,16 +36,25 @@ function renderTasks() {
 
   for (const task of tasks) {
     const li = document.createElement("li");
-    li.className = "task";
+    li.className = `task ${task.completed ? "completed" : ""}`;
 
     li.innerHTML = `
-      <span>${task.title}</span>
+      <label>
+        <input type="checkbox" ${task.completed ? "checked" : ""} />
+        <span>${task.title}</span>
+      </label>
       <span class="badge">${task.priority}</span>
     `;
+
+    li.querySelector("input").addEventListener("change", () => {
+      task.completed = !task.completed;
+      renderTasks();
+    });
 
     listEl.appendChild(li);
   }
 }
+
 
 function addTask(title, priority) {
   const task = createTask(title, priority);
