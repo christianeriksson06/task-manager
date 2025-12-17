@@ -4,6 +4,11 @@ const STORAGE_KEY = "task_manager_tasks";
 const form = document.querySelector("#task-form");
 const titleInput = document.querySelector("#task-title");
 const prioSelect = document.querySelector("#task-priority");
+document.querySelector('[data-filter="all"]')?.classList.add("is-active");
+
+
+// Application state
+let filter = "all";
 
 let tasks = loadTasks();
 renderTasks();
@@ -24,6 +29,15 @@ function addTask(title, priority) {
   renderTasks();
 }
 
+const filterButtons = document.querySelectorAll("[data-filter]");
+
+for (const btn of filterButtons) {
+  btn.addEventListener("click", () => {
+    filter = btn.dataset.filter;
+    renderTasks();
+  });
+}
+
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -37,10 +51,18 @@ form.addEventListener("submit", (e) => {
 
 const listEl = document.querySelector("#task-list");
 
+function getVisibleTasks() {
+  if (filter === "active") return tasks.filter(t => !t.completed);
+  if (filter === "completed") return tasks.filter(t => t.completed);
+  return tasks;
+}
+
+
 function renderTasks() {
   listEl.innerHTML = "";
 
-  for (const task of tasks) {
+  for (const task of getVisibleTasks()) {
+ 
     const li = document.createElement("li");
     li.className = `task ${task.completed ? "completed" : ""}`;
 
@@ -55,6 +77,9 @@ function renderTasks() {
 
 li.querySelector("button").addEventListener("click", () => {
   tasks = tasks.filter(t => t.id !== task.id);
+  for (const b of filterButtons) b.classList.remove("is-active");
+btn.classList.add("is-active");
+
   renderTasks();
 });
 
@@ -71,7 +96,7 @@ function addTask(title, priority) {
   renderTasks();
 }
 
-
+// Persist tasks to localStorage
 function saveTasks() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
 }

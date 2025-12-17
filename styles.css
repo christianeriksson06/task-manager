@@ -27,3 +27,11 @@ button { cursor: pointer; }
 @media (min-width: 1000px) {
   .site-header .container { display: flex; align-items: baseline; justify-content: space-between; }
 }
+
+.filters button.is-active {
+  border: 2px solid #000;
+}
+
+.task {
+  transition: opacity 0.2s ease;
+}
