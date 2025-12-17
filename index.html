@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="sv">
   <head>
     <meta charset="utf-8" />
@@ -20,7 +20,27 @@
     </header>
 
     <main class="container">
-    
+      <section aria-labelledby="add-task-title">
+        <h2 id="add-task-title">Lägg till task</h2>
+
+        <form id="task-form">
+          <label for="task-title">Titel</label>
+          <input id="task-title" name="title" type="text" required />
+
+          <label for="task-priority">Prioritet</label>
+          <select
+            id="task-priority"
+            name="priority"
+            aria-label="Välj prioritet"
+          >
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+
+          <button type="submit">Lägg till</button>
+        </form>
+      </section>
     </main>
 
     <footer class="site-footer" id="about">
