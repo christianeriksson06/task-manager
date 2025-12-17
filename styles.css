@@ -31,3 +31,7 @@ button { cursor: pointer; }
 .filters button.is-active {
   border: 2px solid #000;
 }
+
+.task {
+  transition: opacity 0.2s ease;
+}
