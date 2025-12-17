@@ -41,6 +41,17 @@
           <button type="submit">Lägg till</button>
         </form>
       </section>
+      <section id="tasks" aria-labelledby="task-list-title">
+        <h2 id="task-list-title">Tasks</h2>
+
+        <div class="filters" role="group" aria-label="Filtrera tasks">
+          <button type="button" data-filter="all">Alla</button>
+          <button type="button" data-filter="active">Aktiva</button>
+          <button type="button" data-filter="completed">Klara</button>
+        </div>
+
+        <ul id="task-list" aria-live="polite"></ul>
+      </section>
     </main>
 
     <footer class="site-footer" id="about">
