@@ -1,3 +1,9 @@
 * { box-sizing: border-box; }
 body { margin: 0; font-family: system-ui, Arial, sans-serif; line-height: 1.4; }
 img { max-width: 100%; display: block; }
+
+.container { width: min(960px, 92%); margin: 0 auto; }
+.site-header, .site-footer { padding: 16px 0; border-bottom: 1px solid #ddd; }
+.site-footer { border-bottom: none; border-top: 1px solid #ddd; }
+.nav { list-style: none; padding: 0; margin: 8px 0 0; display: flex; gap: 12px; }
+.nav a { text-decoration: none; }
