@@ -16,3 +16,14 @@ button { cursor: pointer; }
 .task .meta { display: flex; gap: 10px; align-items: center; }
 .badge { padding: 2px 8px; border: 1px solid #ddd; border-radius: 999px; font-size: 12px; }
 .task.completed { opacity: 0.6; text-decoration: line-through; }
+
+.filters { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0; }
+
+@media (min-width: 700px) {
+  main.container { display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; }
+  #tasks { align-self: start; }
+}
+
+@media (min-width: 1000px) {
+  .site-header .container { display: flex; align-items: baseline; justify-content: space-between; }
+}
