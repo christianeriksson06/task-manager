@@ -7,3 +7,12 @@ img { max-width: 100%; display: block; }
 .site-footer { border-bottom: none; border-top: 1px solid #ddd; }
 .nav { list-style: none; padding: 0; margin: 8px 0 0; display: flex; gap: 12px; }
 .nav a { text-decoration: none; }
+
+form { display: grid; gap: 10px; max-width: 420px; }
+input, select, button { padding: 10px; font: inherit; }
+button { cursor: pointer; }
+#task-list { list-style: none; padding: 0; margin: 16px 0; display: grid; gap: 10px; }
+.task { display: flex; align-items: center; justify-content: space-between; padding: 12px; border: 1px solid #ddd; border-radius: 10px; }
+.task .meta { display: flex; gap: 10px; align-items: center; }
+.badge { padding: 2px 8px; border: 1px solid #ddd; border-radius: 999px; font-size: 12px; }
+.task.completed { opacity: 0.6; text-decoration: line-through; }
