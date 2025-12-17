@@ -24,3 +24,7 @@ button { cursor: pointer; }
   main.container { display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; }
   #tasks { align-self: start; }
 }
+
+@media (min-width: 1000px) {
+  .site-header .container { display: flex; align-items: baseline; justify-content: space-between; }
+}
