@@ -4,6 +4,8 @@ const STORAGE_KEY = "task_manager_tasks";
 const form = document.querySelector("#task-form");
 const titleInput = document.querySelector("#task-title");
 const prioSelect = document.querySelector("#task-priority");
+document.querySelector('[data-filter="all"]')?.classList.add("is-active");
+
 
 let filter = "all";
 
@@ -74,6 +76,9 @@ function renderTasks() {
 
 li.querySelector("button").addEventListener("click", () => {
   tasks = tasks.filter(t => t.id !== task.id);
+  for (const b of filterButtons) b.classList.remove("is-active");
+btn.classList.add("is-active");
+
   renderTasks();
 });
 
