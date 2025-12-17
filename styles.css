@@ -19,3 +19,8 @@ button { cursor: pointer; }
 .task.completed { opacity: 0.6; text-decoration: line-through; }
 
 .filters { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0; }
+
+@media (min-width: 700px) {
+  main.container { display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; }
+  #tasks { align-self: start; }
+}
