@@ -39,17 +39,19 @@ function renderTasks() {
     li.className = `task ${task.completed ? "completed" : ""}`;
 
     li.innerHTML = `
-      <label>
-        <input type="checkbox" ${task.completed ? "checked" : ""} />
-        <span>${task.title}</span>
-      </label>
-      <span class="badge">${task.priority}</span>
-    `;
+  <label>
+    <input type="checkbox" ${task.completed ? "checked" : ""} />
+    <span>${task.title}</span>
+  </label>
+  <span class="badge">${task.priority}</span>
+  <button type="button">Ta bort</button>
+`;
 
-    li.querySelector("input").addEventListener("change", () => {
-      task.completed = !task.completed;
-      renderTasks();
-    });
+li.querySelector("button").addEventListener("click", () => {
+  tasks = tasks.filter(t => t.id !== task.id);
+  renderTasks();
+});
+
 
     listEl.appendChild(li);
   }
