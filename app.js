@@ -4,7 +4,10 @@ const STORAGE_KEY = "task_manager_tasks";
 const form = document.querySelector("#task-form");
 const titleInput = document.querySelector("#task-title");
 const prioSelect = document.querySelector("#task-priority");
+document.querySelector('[data-filter="all"]')?.classList.add("is-active");
 
+
+// Application state
 let filter = "all";
 
 let tasks = loadTasks();
@@ -74,6 +77,9 @@ function renderTasks() {
 
 li.querySelector("button").addEventListener("click", () => {
   tasks = tasks.filter(t => t.id !== task.id);
+  for (const b of filterButtons) b.classList.remove("is-active");
+btn.classList.add("is-active");
+
   renderTasks();
 });
 
@@ -90,7 +96,7 @@ function addTask(title, priority) {
   renderTasks();
 }
 
-
+// Persist tasks to localStorage
 function saveTasks() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
 }
