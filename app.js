@@ -48,10 +48,18 @@ form.addEventListener("submit", (e) => {
 
 const listEl = document.querySelector("#task-list");
 
+function getVisibleTasks() {
+  if (filter === "active") return tasks.filter(t => !t.completed);
+  if (filter === "completed") return tasks.filter(t => t.completed);
+  return tasks;
+}
+
+
 function renderTasks() {
   listEl.innerHTML = "";
 
-  for (const task of tasks) {
+  for (const task of getVisibleTasks()) {
+ 
     const li = document.createElement("li");
     li.className = `task ${task.completed ? "completed" : ""}`;
 
