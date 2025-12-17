@@ -5,6 +5,8 @@ const form = document.querySelector("#task-form");
 const titleInput = document.querySelector("#task-title");
 const prioSelect = document.querySelector("#task-priority");
 
+let filter = "all";
+
 let tasks = loadTasks();
 renderTasks();
 
@@ -22,6 +24,15 @@ function addTask(title, priority) {
   tasks.push(task);
   saveTasks();
   renderTasks();
+}
+
+const filterButtons = document.querySelectorAll("[data-filter]");
+
+for (const btn of filterButtons) {
+  btn.addEventListener("click", () => {
+    filter = btn.dataset.filter;
+    renderTasks();
+  });
 }
 
 
